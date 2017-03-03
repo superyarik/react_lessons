@@ -23,8 +23,14 @@ class Counter extends Component {
     }
 }
 
-export default connect((state) => {
-    return {count: state}
-}, {
-    increment
-})(Counter)
+const mapStateToProps = (state) => {
+    return { count: state };
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        increment: () =>  dispatch(increment()),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps, () => {debugger})(Counter)
